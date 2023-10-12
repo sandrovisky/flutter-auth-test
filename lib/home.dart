@@ -18,28 +18,27 @@ class HomePage extends StatelessWidget {
           appBar: AppBar(title: Text('Home'), actions: [
             IconButton(
                 onPressed: () async {
-                  await state.logout(context);
+                  await state.logout();
                 },
                 icon: Icon(Icons.logout)),
-            IconButton(
-                onPressed: () async {
-                  await Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Third()));
-                },
-                icon: Icon(Icons.next_plan)),
-            IconButton(
-                onPressed: () async {
-                  state.change();
-                },
-                icon: Icon(Icons.change_circle))
           ]),
           body: Center(
-            child: Text(value.name),
+            child: Column(
+              children: [
+                Text(value.name),
+                const SizedBox(height: 20),
+                FloatingActionButton.extended(
+                  onPressed: () async {
+                    await Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Third()));
+                  },
+                  label: const Text('Proxima pagina'),
+                )
+              ],
+            ),
           ),
         );
       }
-      print(value);
-      print('erro no bagulho');
       throw Exception('erro no bagulho');
     } catch (e) {
       return Center(

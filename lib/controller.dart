@@ -11,20 +11,10 @@ class ControllerAuthState extends ValueNotifier<AuthState> {
     value = LoggedAuthState('Sandro');
   }
 
-  Future<void> logout(BuildContext context) async {
-    Navigator.pop(context);
+  Future<void> logout() async {
+    //Navigator.pop(context);
     value = LoadingAuthState();
     await Future.delayed(const Duration(seconds: 2));
     value = LogoutAuthState();
-  }
-
-  void change() async {
-    final user = (value as LoggedAuthState).name;
-
-    if (user == 'Sandro') {
-      value = LoggedAuthState('Outro');
-    } else {
-      value = LoggedAuthState('Sandro');
-    }
   }
 }
