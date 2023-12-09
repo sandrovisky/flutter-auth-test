@@ -13,7 +13,10 @@ class LoginPage extends StatelessWidget {
       ),
       body: Center(
         child: FloatingActionButton.extended(
-          onPressed: context.read<ControllerAuthState>().login,
+          onPressed: () {
+            context.read<ControllerAuthState>().login();
+            print(context.mounted);
+          },
           label: Text('Login'),
         ),
       ),
